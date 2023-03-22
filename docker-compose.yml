@@ -1,0 +1,23 @@
+version: '3.7'
+
+x-api-volumes: &api-volumes
+  - ./:/app:cached
+  - ~/.bash_history:/root/.bash_history
+  - ~/.ssh:/root/.ssh
+
+x-app-config: &app-config
+  MIX_ENV: dev
+  SECRET_KEY_BASE: secret_key
+
+services:
+  api:
+    build:
+      context: ./
+      args:
+        ENV: dev
+    environment: *app-config
+    ports:
+      - '4000:4000'
+    volumes: *api-volumes
+    stdin_open: true
+    tty: true
