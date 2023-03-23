@@ -15,3 +15,6 @@ api_linter:
 
 api_formatter:
 	docker-compose run --rm api mix format
+
+bash:
+	docker-compose run --rm api bash
