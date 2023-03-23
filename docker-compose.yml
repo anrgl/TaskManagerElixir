@@ -9,15 +9,31 @@ x-app-config: &app-config
   MIX_ENV: dev
   SECRET_KEY_BASE: secret_key
 
+x-db-config: &db-config
+  DATABASE_NAME: postgres
+  DATABASE_USER: postgres
+  DATABASE_PASSWORD: pgpassword
+  DATABASE_HOST: db
+  DATABASE_PORT: 5432
+  POSTGRES_PASSWORD: pgpassword
+
 services:
   api:
     build:
       context: ./
       args:
         ENV: dev
-    environment: *app-config
+    environment:
+      <<: [*app-config, *db-config]
+    depends_on:
+      - db
     ports:
       - '4000:4000'
     volumes: *api-volumes
     stdin_open: true
     tty: true
+  db:
+    image: postgres:15.1
+    environment: *db-config
+    ports:
+      - '5432:5432'
