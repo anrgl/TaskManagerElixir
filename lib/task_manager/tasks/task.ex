@@ -11,6 +11,7 @@ defmodule TaskManager.Tasks.Task do
     field :title, :string
     belongs_to :creator, User
     belongs_to :performer, User
+    many_to_many :tags, TaskManager.Tags.Tag, join_through: "tasks_tags"
 
     timestamps()
   end
