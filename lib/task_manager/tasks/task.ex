@@ -2,12 +2,13 @@ defmodule TaskManager.Tasks.Task do
   use Ecto.Schema
   import Ecto.Changeset
   alias TaskManager.Users.User
+  alias TaskManager.Tasks.{TaskPriority, TaskState}
 
   schema "tasks" do
     field :description, :string
     field :end_task_date, :date
-    field :priority, :string
-    field :state, :string
+    field :priority, TaskPriority
+    field :state, TaskState
     field :title, :string
     belongs_to :creator, User
     belongs_to :performer, User
