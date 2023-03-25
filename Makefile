@@ -18,3 +18,6 @@ api_formatter:
 
 bash:
 	docker-compose run --rm api bash
+
+psql:
+	docker-compose exec db psql -U postgres
