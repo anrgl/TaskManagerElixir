@@ -5,7 +5,7 @@ server:
 	docker-compose run --rm api mix phx.server
 
 iex:
-	docker-compose run --rm --service-ports api iex
+	docker-compose run --rm --service-ports api iex -S mix phx.server
 
 deps_get:
 	docker-compose run --rm api mix deps.get
@@ -18,3 +18,6 @@ api_formatter:
 
 bash:
 	docker-compose run --rm api bash
+
+psql:
+	docker-compose exec db psql -U postgres

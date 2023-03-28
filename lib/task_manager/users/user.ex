@@ -2,13 +2,14 @@ defmodule TaskManager.Users.User do
   alias TaskManager.Repo
   use Ecto.Schema
   import Ecto.Changeset
+  alias TaskManager.Users.UserRole
 
   schema "users" do
     field :email, :string
     field :first_name, :string
     field :hashed_password, :string
     field :last_name, :string
-    field :role, :string
+    field :role, UserRole
 
     timestamps()
   end
