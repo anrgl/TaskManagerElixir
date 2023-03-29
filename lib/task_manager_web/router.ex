@@ -9,6 +9,7 @@ defmodule TaskManagerWeb.Router do
     pipe_through :api
 
     resources "/users", UsersController, except: [:new, :edit]
+    resources "/tasks", TasksController, except: [:new, :edit]
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
