@@ -10,6 +10,7 @@ defmodule TaskManagerWeb.Router do
 
     resources "/users", UsersController, except: [:new, :edit]
     resources "/tasks", TasksController, except: [:new, :edit]
+    resources "/tags", TagsController, except: [:new, :edit]
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development
