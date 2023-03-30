@@ -5,7 +5,7 @@ defmodule TaskManager.Users.UserRole do
 
   use TaskManager.Core.UpcaseInclusionString
 
-  @impl
+  @impl true
   def value_map do
     %{
       developer: "DEVELOPER",
