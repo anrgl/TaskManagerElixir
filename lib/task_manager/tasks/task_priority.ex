@@ -5,7 +5,7 @@ defmodule TaskManager.Tasks.TaskPriority do
 
   use TaskManager.Core.UpcaseInclusionString
 
-  @impl
+  @impl true
   def value_map do
     %{
       low: "LOW",

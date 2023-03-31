@@ -13,7 +13,7 @@ deps_get:
 api_linter:
 	docker-compose run --rm api mix dialyzer
 
-api_formatter:
+api_format:
 	docker-compose run --rm api mix format
 
 bash:

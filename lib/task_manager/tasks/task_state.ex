@@ -5,7 +5,7 @@ defmodule TaskManager.Tasks.TaskState do
 
   use TaskManager.Core.UpcaseInclusionString
 
-  @impl
+  @impl true
   def value_map do
     %{
       new_task: "NEW_TASK",
