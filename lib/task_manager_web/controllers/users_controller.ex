@@ -6,9 +6,9 @@ defmodule TaskManagerWeb.UsersController do
 
   action_fallback TaskManagerWeb.FallbackController
 
-  def index(conn, _params) do
-    users = Users.list_users()
-    render(conn, :index, users: users)
+  def index(conn, params) do
+    %{entries: users, metadata: pagination} = Users.list_users(params)
+    render(conn, :index, users: users, pagination: pagination)
   end
 
   def create(conn, %{"user" => user_params}) do

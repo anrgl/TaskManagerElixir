@@ -1,8 +1,13 @@
 defmodule TaskManagerWeb.UsersJSON do
   alias TaskManager.Users.User
 
-  def index(%{users: users}) do
-    %{data: for(user <- users, do: data(user))}
+  import TaskManagerWeb.PaginationJSON
+
+  def index(%{users: users, pagination: pagination}) do
+    %{
+      data: for(user <- users, do: data(user)),
+      metadata: render(%{pagination: pagination})
+    }
   end
 
   def show(%{user: user}) do
