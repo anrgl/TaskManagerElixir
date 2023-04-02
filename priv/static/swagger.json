@@ -1,0 +1,342 @@
+{
+  "consumes": [
+    "application/json"
+  ],
+  "definitions": {
+    "User": {
+      "description": "Single User resource",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/UserSchema",
+          "description": "User resource"
+        }
+      },
+      "title": "User",
+      "type": "object"
+    },
+    "UserBody": {
+      "description": "User entity",
+      "properties": {
+        "user": {
+          "example": {
+            "email": "ainur.galimov@examplepartners.com",
+            "first_name": "Ainur",
+            "last_name": "Galimov",
+            "password": "f00bar",
+            "role": "DEVELOPER"
+          },
+          "properties": {
+            "email": {
+              "description": "User email",
+              "type": "string"
+            },
+            "first_name": {
+              "description": "User first name",
+              "type": "string"
+            },
+            "last_name": {
+              "description": "User last name",
+              "type": "string"
+            },
+            "password": {
+              "description": "User password",
+              "type": "string"
+            },
+            "role": {
+              "description": "User role",
+              "type": "string"
+            }
+          },
+          "required": [
+            "password",
+            "role",
+            "email",
+            "last_name",
+            "first_name"
+          ],
+          "type": "object"
+        }
+      },
+      "title": "User",
+      "type": "object"
+    },
+    "UserSchema": {
+      "description": "User entity",
+      "example": {
+        "email": "ainur.galimov@examplepartners.com",
+        "first_name": "Ainur",
+        "id": 1,
+        "last_name": "Galimov",
+        "role": "DEVELOPER"
+      },
+      "properties": {
+        "email": {
+          "description": "User email",
+          "type": "string"
+        },
+        "first_name": {
+          "description": "User first name",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "last_name": {
+          "description": "User last name",
+          "type": "string"
+        },
+        "role": {
+          "description": "User role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "email",
+        "last_name",
+        "first_name",
+        "id"
+      ],
+      "title": "User",
+      "type": "object"
+    },
+    "Users": {
+      "description": "A collection of Users",
+      "properties": {
+        "data": {
+          "description": "Users collection",
+          "items": {
+            "$ref": "#/definitions/UserSchema"
+          },
+          "type": "array"
+        },
+        "pagination": {
+          "example": {
+            "page_number": 2,
+            "page_size": 10,
+            "total_count": 70,
+            "total_pages": 7
+          },
+          "properties": {
+            "page_number": {
+              "description": "Current page number",
+              "type": "integer"
+            },
+            "page_size": {
+              "description": "Current page size",
+              "type": "integer"
+            },
+            "total_count": {
+              "description": "Total entries count",
+              "type": "integer"
+            },
+            "total_pages": {
+              "description": "Total pages count",
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "title": "Users",
+      "type": "object"
+    }
+  },
+  "host": "localhost:4000",
+  "info": {
+    "contact": {
+      "email": "ainur.galimov@examplepartners.com",
+      "name": "Ainur Galimov"
+    },
+    "description": "API Documentation for TaskManager v1",
+    "termsOfService": "Open for public",
+    "title": "TaskManager API",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/users": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.UsersController.index",
+        "parameters": [
+          {
+            "description": "Number of elements per page",
+            "in": "query",
+            "minimum": 1,
+            "name": "page_size",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Number of the page",
+            "in": "query",
+            "minimum": 1,
+            "name": "page_number",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Users"
+        ]
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.UsersController.create",
+        "parameters": [
+          {
+            "description": "User attributes",
+            "in": "body",
+            "name": "user",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/UserBody"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Users"
+        ]
+      }
+    },
+    "/api/users/{id}": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.UsersController.delete",
+        "parameters": [
+          {
+            "description": "User id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Users"
+        ]
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.UsersController.show",
+        "parameters": [
+          {
+            "description": "User id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Users"
+        ]
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.UsersController.update",
+        "parameters": [
+          {
+            "description": "User id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "User attributes",
+            "in": "body",
+            "name": "user",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/UserBody"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Users"
+        ]
+      }
+    }
+  },
+  "produces": [
+    "application/json"
+  ],
+  "schemes": [
+    "http"
+  ],
+  "swagger": "2.0"
+}

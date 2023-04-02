@@ -46,7 +46,9 @@ defmodule TaskManager.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:dialyxir, "~> 1.0", only: [:dev, :test], runtime: false},
       {:faker, "~> 0.17", only: :test},
-      {:ex_machina, "~> 2.7.0", only: :test}
+      {:ex_machina, "~> 2.7.0", only: :test},
+      {:ex_json_schema, "~> 0.9"},
+      {:phoenix_swagger, "~> 0.8"}
     ]
   end
 

@@ -40,3 +40,15 @@ config :phoenix, :json_library, Jason
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
+
+config :task_manager, env: config_env()
+
+config :task_manager, :phoenix_swagger,
+  swagger_files: %{
+    "priv/static/swagger.json" => [
+      router: TaskManagerWeb.Router,
+      endpoint: TaskManagerWeb.Endpoint
+    ]
+  }
+
+config :phoenix_swagger, json_library: Jason
