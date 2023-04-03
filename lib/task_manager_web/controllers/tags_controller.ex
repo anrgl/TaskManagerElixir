@@ -1,5 +1,6 @@
 defmodule TaskManagerWeb.TagsController do
   use TaskManagerWeb, :controller
+  use TaskManagerWeb.ApiDoc.TagDoc
 
   alias TaskManager.Tags
   alias TaskManager.Tags.Tag

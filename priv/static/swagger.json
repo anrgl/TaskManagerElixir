@@ -3,6 +3,279 @@
     "application/json"
   ],
   "definitions": {
+    "Tag": {
+      "description": "Single Tag resource",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/TagSchema",
+          "description": "Tag resource"
+        }
+      },
+      "title": "Tag",
+      "type": "object"
+    },
+    "TagBody": {
+      "description": "Tag entity",
+      "properties": {
+        "tag": {
+          "example": {
+            "name": "Tag #1"
+          },
+          "properties": {
+            "name": {
+              "description": "Tag name",
+              "type": "string"
+            }
+          },
+          "required": [
+            "name"
+          ],
+          "type": "object"
+        }
+      },
+      "title": "Tag",
+      "type": "object"
+    },
+    "TagSchema": {
+      "description": "Tag entity",
+      "example": {
+        "id": 1,
+        "name": "Tag #1"
+      },
+      "properties": {
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "name": {
+          "description": "Tag name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "id"
+      ],
+      "title": "Tag",
+      "type": "object"
+    },
+    "Tags": {
+      "description": "A collection of Tags",
+      "properties": {
+        "data": {
+          "description": "Tags collection",
+          "items": {
+            "$ref": "#/definitions/TagSchema"
+          },
+          "type": "array"
+        },
+        "pagination": {
+          "example": {
+            "page_number": 2,
+            "page_size": 10,
+            "total_count": 70,
+            "total_pages": 7
+          },
+          "properties": {
+            "page_number": {
+              "description": "Current page number",
+              "type": "integer"
+            },
+            "page_size": {
+              "description": "Current page size",
+              "type": "integer"
+            },
+            "total_count": {
+              "description": "Total entries count",
+              "type": "integer"
+            },
+            "total_pages": {
+              "description": "Total pages count",
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "title": "Tags",
+      "type": "object"
+    },
+    "Task": {
+      "description": "Single Task resource",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/TaskSchema",
+          "description": "Task resource"
+        }
+      },
+      "title": "Task",
+      "type": "object"
+    },
+    "TaskBody": {
+      "description": "Task entity",
+      "properties": {
+        "task": {
+          "example": {
+            "creator_id": 1,
+            "description": "Task description",
+            "email": "ainur.galimov@examplepartners.com",
+            "end_task_date": {
+              "calendar": "Elixir.Calendar.ISO",
+              "day": 9,
+              "month": 4,
+              "year": 2023
+            },
+            "performer_id": 2,
+            "priority": "LOW",
+            "state": "NEW_TASK",
+            "title": "Task #1"
+          },
+          "properties": {
+            "creator_id": {
+              "description": "Task creator id",
+              "type": "integer"
+            },
+            "description": {
+              "description": "Task description",
+              "type": "string"
+            },
+            "end_task_date": {
+              "description": "Task end date",
+              "type": "date"
+            },
+            "performer_id": {
+              "description": "Task performer id",
+              "type": "integer"
+            },
+            "priority": {
+              "description": "Task priority",
+              "type": "string"
+            },
+            "state": {
+              "description": "Task state",
+              "type": "string"
+            },
+            "title": {
+              "description": "Task title",
+              "type": "string"
+            }
+          },
+          "required": [
+            "state",
+            "priority",
+            "end_task_date",
+            "description",
+            "title"
+          ],
+          "type": "object"
+        }
+      },
+      "title": "Task",
+      "type": "object"
+    },
+    "TaskSchema": {
+      "description": "Task entity",
+      "example": {
+        "creator_id": 1,
+        "description": "Task description",
+        "end_task_date": {
+          "calendar": "Elixir.Calendar.ISO",
+          "day": 9,
+          "month": 4,
+          "year": 2023
+        },
+        "id": 1,
+        "performer_id": 2,
+        "priority": "LOW",
+        "state": "NEW_TASK",
+        "title": "Task #1"
+      },
+      "properties": {
+        "creator_id": {
+          "description": "Task creator id",
+          "type": "integer"
+        },
+        "description": {
+          "description": "Task description",
+          "type": "string"
+        },
+        "end_task_date": {
+          "description": "Task end date",
+          "type": "date"
+        },
+        "id": {
+          "description": "Unique identifier",
+          "type": "string"
+        },
+        "performer_id": {
+          "description": "Task performer id",
+          "type": "integer"
+        },
+        "priority": {
+          "description": "Task priority",
+          "type": "string"
+        },
+        "state": {
+          "description": "Task state",
+          "type": "string"
+        },
+        "title": {
+          "description": "Task title",
+          "type": "string"
+        }
+      },
+      "required": [
+        "state",
+        "priority",
+        "end_task_date",
+        "description",
+        "title",
+        "id"
+      ],
+      "title": "Task",
+      "type": "object"
+    },
+    "Tasks": {
+      "description": "A collection of Tasks",
+      "properties": {
+        "data": {
+          "description": "Tasks collection",
+          "items": {
+            "$ref": "#/definitions/TaskSchema"
+          },
+          "type": "array"
+        },
+        "pagination": {
+          "example": {
+            "page_number": 2,
+            "page_size": 10,
+            "total_count": 70,
+            "total_pages": 7
+          },
+          "properties": {
+            "page_number": {
+              "description": "Current page number",
+              "type": "integer"
+            },
+            "page_size": {
+              "description": "Current page size",
+              "type": "integer"
+            },
+            "total_count": {
+              "description": "Total entries count",
+              "type": "integer"
+            },
+            "total_pages": {
+              "description": "Total pages count",
+              "type": "integer"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "title": "Tasks",
+      "type": "object"
+    },
     "User": {
       "description": "Single User resource",
       "properties": {
@@ -155,6 +428,358 @@
     "version": "1.0"
   },
   "paths": {
+    "/api/tags": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.TagsController.index",
+        "parameters": [
+          {
+            "description": "Number of elements per page",
+            "in": "query",
+            "minimum": 1,
+            "name": "page_size",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Number of the page",
+            "in": "query",
+            "minimum": 1,
+            "name": "page_number",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tags"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tags"
+        ]
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.TagsController.create",
+        "parameters": [
+          {
+            "description": "Tag attributes",
+            "in": "body",
+            "name": "tag",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/TagBody"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tag"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tags"
+        ]
+      }
+    },
+    "/api/tags/{id}": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.TagsController.delete",
+        "parameters": [
+          {
+            "description": "Tag id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tags"
+        ]
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.TagsController.show",
+        "parameters": [
+          {
+            "description": "Tag id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tag"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tags"
+        ]
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.TagsController.update",
+        "parameters": [
+          {
+            "description": "Tag id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "Tag attributes",
+            "in": "body",
+            "name": "tag",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/TagBody"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tag"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tags"
+        ]
+      }
+    },
+    "/api/tasks": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.TasksController.index",
+        "parameters": [
+          {
+            "description": "Number of elements per page",
+            "in": "query",
+            "minimum": 1,
+            "name": "page_size",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "description": "Number of the page",
+            "in": "query",
+            "minimum": 1,
+            "name": "page_number",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Tasks"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tasks"
+        ]
+      },
+      "post": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.TasksController.create",
+        "parameters": [
+          {
+            "description": "Task attributes",
+            "in": "body",
+            "name": "task",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/TaskBody"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
+    "/api/tasks/{id}": {
+      "delete": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.TasksController.delete",
+        "parameters": [
+          {
+            "description": "Task id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "OK"
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tasks"
+        ]
+      },
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.TasksController.show",
+        "parameters": [
+          {
+            "description": "Task id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tasks"
+        ]
+      },
+      "patch": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "",
+        "operationId": "TaskManagerWeb.TasksController.update",
+        "parameters": [
+          {
+            "description": "Task id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "description": "Task attributes",
+            "in": "body",
+            "name": "task",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/TaskBody"
+            }
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Task"
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Tasks"
+        ]
+      }
+    },
     "/api/users": {
       "get": {
         "consumes": [
