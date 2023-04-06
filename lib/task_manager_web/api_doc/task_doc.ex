@@ -19,6 +19,11 @@ defmodule TaskManagerWeb.ApiDoc.TaskDoc do
         consumes("application/json")
         produces("application/json")
         CommonParameters.pagination()
+
+        parameters do
+          title(:query, :string, "Task title")
+        end
+
         response(200, "OK", Schema.ref(:Tasks))
       end
 

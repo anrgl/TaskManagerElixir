@@ -17,6 +17,11 @@ defmodule TaskManagerWeb.ApiDoc.TagDoc do
         consumes("application/json")
         produces("application/json")
         CommonParameters.pagination()
+
+        parameters do
+          name(:query, :string, "Tag name")
+        end
+
         response(200, "OK", Schema.ref(:Tags))
       end
 

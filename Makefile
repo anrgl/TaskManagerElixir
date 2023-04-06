@@ -24,3 +24,6 @@ bash:
 
 psql:
 	docker-compose exec db psql -U postgres
+
+swagger:
+	docker-compose run --rm api mix phx.swagger.generate
