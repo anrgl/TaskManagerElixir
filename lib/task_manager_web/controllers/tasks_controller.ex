@@ -1,5 +1,6 @@
 defmodule TaskManagerWeb.TasksController do
   use TaskManagerWeb, :controller
+  use TaskManagerWeb.ApiDoc.TaskDoc
 
   alias TaskManager.Tasks
   alias TaskManager.Tasks.Task

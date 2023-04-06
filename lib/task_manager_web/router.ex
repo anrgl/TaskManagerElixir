@@ -13,6 +13,14 @@ defmodule TaskManagerWeb.Router do
     resources "/tags", TagsController, except: [:new, :edit]
   end
 
+  scope "/swagger" do
+    forward "/", PhoenixSwagger.Plug.SwaggerUI,
+      otp_app: :task_manager,
+      swagger_file: "swagger.json"
+  end
+
+  def swagger_info, do: TaskManagerWeb.ApiDoc.Info.swagger_info()
+
   # Enable LiveDashboard and Swoosh mailbox preview in development
   if Application.compile_env(:task_manager, :dev_routes) do
     # If you want to use the LiveDashboard in production, you should put

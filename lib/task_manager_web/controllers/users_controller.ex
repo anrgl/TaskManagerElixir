@@ -1,5 +1,6 @@
 defmodule TaskManagerWeb.UsersController do
   use TaskManagerWeb, :controller
+  use TaskManagerWeb.ApiDoc.UserDoc
 
   alias TaskManager.Users
   alias TaskManager.Users.User

@@ -27,3 +27,5 @@ task_manager-*.tar
 
 # Ignore rest client files
 *.rest
+
+swagger.json
