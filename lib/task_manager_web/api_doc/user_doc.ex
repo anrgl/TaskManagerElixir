@@ -17,6 +17,9 @@ defmodule TaskManagerWeb.ApiDoc.UserDoc do
         consumes("application/json")
         produces("application/json")
         CommonParameters.pagination()
+        parameters do
+          full_name(:query, :string, "User full name")
+        end
         response(200, "OK", Schema.ref(:Users))
       end
 

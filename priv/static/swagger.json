@@ -803,6 +803,13 @@
             "name": "page_number",
             "required": false,
             "type": "integer"
+          },
+          {
+            "description": "User full name",
+            "in": "query",
+            "name": "full_name",
+            "required": false,
+            "type": "string"
           }
         ],
         "produces": [

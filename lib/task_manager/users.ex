@@ -7,6 +7,7 @@ defmodule TaskManager.Users do
   alias TaskManager.Repo
 
   alias TaskManager.Users.User
+  alias TaskManager.Users.Filter
 
   @doc """
   Returns the list of users.
@@ -18,7 +19,9 @@ defmodule TaskManager.Users do
 
   """
   def list_users(params \\ %{}) do
-    Repo.paginate(User, params)
+    User
+    |> Filter.filter_query(params)
+    |> Repo.paginate(params)
   end
 
   @doc """
