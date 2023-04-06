@@ -1,8 +1,13 @@
 defmodule TaskManagerWeb.TagsJSON do
   alias TaskManager.Tags.Tag
 
-  def index(%{tags: tags}) do
-    %{data: for(tag <- tags, do: data(tag))}
+  import TaskManagerWeb.PaginationJSON
+
+  def index(%{tags: tags, pagination: _} = data) do
+    %{
+      data: for(tag <- tags, do: data(tag)),
+      metadata: render(data)
+    }
   end
 
   def show(%{tag: tag}) do

@@ -6,9 +6,9 @@ defmodule TaskManagerWeb.TagsController do
 
   action_fallback TaskManagerWeb.FallbackController
 
-  def index(conn, _params) do
-    tags = Tags.list_tags()
-    render(conn, :index, tags: tags)
+  def index(conn, params) do
+    %{entries: tags, metadata: pagination} = Tags.list_tags(params)
+    render(conn, :index, tags: tags, pagination: pagination)
   end
 
   def create(conn, %{"tag" => tag_params}) do

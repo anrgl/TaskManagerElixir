@@ -1,8 +1,13 @@
 defmodule TaskManagerWeb.TasksJSON do
   alias TaskManager.Tasks.Task
 
-  def index(%{tasks: tasks}) do
-    %{data: for(task <- tasks, do: data(task))}
+  import TaskManagerWeb.PaginationJSON
+
+  def index(%{tasks: tasks, pagination: _} = data) do
+    %{
+      data: for(task <- tasks, do: data(task)),
+      metadata: render(data)
+    }
   end
 
   def show(%{task: task}) do

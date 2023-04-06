@@ -17,8 +17,8 @@ defmodule TaskManager.Tasks do
       [%Task{}, ...]
 
   """
-  def list_tasks do
-    Repo.all(Task)
+  def list_tasks(params \\ %{}) do
+    Repo.paginate(Task, params)
   end
 
   @doc """
