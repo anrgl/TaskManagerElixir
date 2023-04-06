@@ -451,6 +451,13 @@
             "name": "page_number",
             "required": false,
             "type": "integer"
+          },
+          {
+            "description": "Tag name",
+            "in": "query",
+            "name": "name",
+            "required": false,
+            "type": "string"
           }
         ],
         "produces": [
@@ -627,6 +634,13 @@
             "name": "page_number",
             "required": false,
             "type": "integer"
+          },
+          {
+            "description": "Task title",
+            "in": "query",
+            "name": "title",
+            "required": false,
+            "type": "string"
           }
         ],
         "produces": [
@@ -803,6 +817,13 @@
             "name": "page_number",
             "required": false,
             "type": "integer"
+          },
+          {
+            "description": "User full name",
+            "in": "query",
+            "name": "full_name",
+            "required": false,
+            "type": "string"
           }
         ],
         "produces": [

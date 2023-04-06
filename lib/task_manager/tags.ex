@@ -7,6 +7,7 @@ defmodule TaskManager.Tags do
   alias TaskManager.Repo
 
   alias TaskManager.Tags.Tag
+  alias TaskManager.Tags.Filter
 
   @doc """
   Returns the list of tags.
@@ -18,7 +19,9 @@ defmodule TaskManager.Tags do
 
   """
   def list_tags(params \\ %{}) do
-    Repo.paginate(Tag, params)
+    Tag
+    |> Filter.filter_query(params)
+    |> Repo.paginate(params)
   end
 
   @doc """

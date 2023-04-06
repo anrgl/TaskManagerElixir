@@ -7,6 +7,7 @@ defmodule TaskManager.Tasks do
   alias TaskManager.Repo
 
   alias TaskManager.Tasks.Task
+  alias TaskManager.Tasks.Filter
 
   @doc """
   Returns the list of tasks.
@@ -18,7 +19,9 @@ defmodule TaskManager.Tasks do
 
   """
   def list_tasks(params \\ %{}) do
-    Repo.paginate(Task, params)
+    Task
+    |> Filter.filter_query(params)
+    |> Repo.paginate(params)
   end
 
   @doc """
