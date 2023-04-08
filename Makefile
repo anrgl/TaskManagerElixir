@@ -19,6 +19,9 @@ api_linter:
 api_format:
 	docker-compose run --rm api mix format
 
+api_test:
+	docker-compose run --rm -e MIX_ENV=test api mix test
+
 bash:
 	docker-compose run --rm api bash
 
