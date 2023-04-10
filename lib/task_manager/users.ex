@@ -104,4 +104,18 @@ defmodule TaskManager.Users do
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
   end
+
+  def user_auth(email, password) when is_nil(email) or is_nil(password) do
+    {:error, :invalid_credentials}
+  end
+
+  def user_auth(email, password) do
+    user = Repo.get_by(User, email: email)
+
+    if User.valid_password?(user, password) do
+      {:ok, user}
+    else
+      {:error, :invalid_credentials}
+    end
+  end
 end

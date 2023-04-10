@@ -52,3 +52,7 @@ config :task_manager, :phoenix_swagger,
   }
 
 config :phoenix_swagger, json_library: Jason
+
+config :task_manager, TaskManager.Guardian,
+  issuer: "task_manager",
+  secret_key: "f6SWKek9Orqut/9szsekFhf/wo+kCUfFoSvyXAQwAEw/VkpIRwryPo/tNnQvJLkp"
