@@ -1,5 +1,6 @@
 defmodule TaskManagerWeb.SessionController do
   use TaskManagerWeb, :controller
+  use TaskManagerWeb.ApiDoc.SessionDoc
 
   alias TaskManager.Users
   alias TaskManager.Users.User
