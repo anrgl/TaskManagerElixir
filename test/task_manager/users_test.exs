@@ -8,7 +8,7 @@ defmodule TaskManager.UsersTest do
   @moduletag :users_test
 
   describe "users" do
-    @invalid_attrs %{email: nil, first_name: nil, hashed_password: nil, last_name: nil, role: nil}
+    @invalid_attrs %{email: nil, first_name: nil, password: nil, last_name: nil, role: nil}
 
     test "list_users/0 returns all users" do
       insert(:manager)
@@ -27,7 +27,6 @@ defmodule TaskManager.UsersTest do
       assert user.email == valid_attrs.email
       assert user.first_name == valid_attrs.first_name
       assert user.last_name == valid_attrs.last_name
-      assert user.hashed_password == valid_attrs.hashed_password
       assert user.role == UserRole.value!(:admin)
     end
 
@@ -44,7 +43,6 @@ defmodule TaskManager.UsersTest do
       assert user.email == update_attrs.email
       assert user.first_name == update_attrs.first_name
       assert user.last_name == update_attrs.last_name
-      assert user.hashed_password == update_attrs.hashed_password
       assert user.role == UserRole.value!(:developer)
     end
 

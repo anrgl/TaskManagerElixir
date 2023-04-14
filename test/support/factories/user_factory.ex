@@ -21,7 +21,7 @@ defmodule TaskManager.UserFactory do
           email: Faker.Internet.email(),
           first_name: Faker.Person.first_name(),
           last_name: Faker.Person.first_name(),
-          hashed_password: Faker.String.base64(12),
+          password: Faker.String.base64(12),
           role: nil
         }
       end
