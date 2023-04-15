@@ -21,10 +21,14 @@ defmodule TaskManager.UserFactory do
           email: Faker.Internet.email(),
           first_name: Faker.Person.first_name(),
           last_name: Faker.Person.first_name(),
-          password: Faker.String.base64(12),
+          password: password(),
+          hashed_password: hashed_password(),
           role: nil
         }
       end
+
+      defp password, do: Faker.String.base64(12)
+      defp hashed_password, do: password() |> Argon2.hash_pwd_salt()
     end
   end
 end

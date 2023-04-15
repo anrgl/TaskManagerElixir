@@ -4,19 +4,21 @@ defmodule TaskManagerWeb.SessionControllerTest do
 
   alias TaskManager.Users.User
 
-  @valid_credentials %{email: "valid@email.com", password: "superpassword"}
   @invalid_credentials %{email: "invalid@email.com", password: "invalidpassword"}
 
   @moduletag :session_controller
 
   describe "create" do
     test "renders data when credentials is valid", %{conn: conn} do
-      manager_params = params_for(:manager, @valid_credentials)
-      post(conn, ~p"/api/users", user: manager_params)
+      email = "valid@email.com"
+      password = "superpassword"
+      hashed_password = Argon2.hash_pwd_salt(password)
 
-      conn = post(conn, ~p"/api/sessions", @valid_credentials)
+      insert(:manager, email: email, password: password, hashed_password: hashed_password)
+
+      conn = post(conn, ~p"/api/sessions", email: email, password: password)
       assert data = json_response(conn, 201)["data"]
-      assert data["email"] == @valid_credentials.email
+      assert data["email"] == email
     end
 
     test "renders error when credentials is invalid", %{conn: conn} do
