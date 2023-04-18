@@ -3,11 +3,21 @@ defmodule TaskManagerWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
+
+    plug Guardian.Plug.Pipeline,
+      module: TaskManager.Guardian,
+      error_handler: TaskManagerWeb.ErrorHandler
+
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.VerifyHeader, scheme: "Bearer"
+    plug Guardian.Plug.LoadResource, allow_blank: true
   end
 
   scope "/api", TaskManagerWeb do
     pipe_through :api
 
+    resources "/sessions", SessionController, only: [:create, :delete], singleton: true
     resources "/users", UsersController, except: [:new, :edit]
     resources "/tasks", TasksController, except: [:new, :edit]
     resources "/tags", TagsController, except: [:new, :edit]

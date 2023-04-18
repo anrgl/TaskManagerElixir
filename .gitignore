@@ -29,3 +29,4 @@ task_manager-*.tar
 *.rest
 
 swagger.json
+priv/static/swagger.json
