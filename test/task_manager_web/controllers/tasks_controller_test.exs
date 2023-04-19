@@ -1,11 +1,16 @@
 defmodule TaskManagerWeb.TasksControllerTest do
   use TaskManagerWeb.ConnCase
-  use TaskManager.TaskFactory
+  use TaskManager.Factory
 
   alias TaskManager.Tasks.Task
 
   @invalid_attrs %{title: nil, description: nil, end_task_date: nil}
   @moduletag :task_controller
+
+  setup %{conn: conn} do
+    user = insert(:manager)
+    {:ok, conn: log_in_user(conn, user), user: user}
+  end
 
   describe "index" do
     test "lists all tasks", %{conn: conn} do

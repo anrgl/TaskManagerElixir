@@ -1,6 +1,6 @@
 defmodule TaskManager.TasksTest do
   use TaskManager.DataCase
-  use TaskManager.TaskFactory
+  use TaskManager.Factory
 
   alias TaskManager.Tasks
   alias TaskManager.Tasks.Task

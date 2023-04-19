@@ -1,11 +1,16 @@
 defmodule TaskManagerWeb.UsersControllerTest do
   use TaskManagerWeb.ConnCase
-  use TaskManager.UserFactory
+  use TaskManager.Factory
 
   alias TaskManager.Users.User
 
   @invalid_attrs %{email: nil, first_name: nil, last_name: nil, role: nil}
   @moduletag :user_controller
+
+  setup %{conn: conn} do
+    user = insert(:manager)
+    {:ok, conn: log_in_user(conn, user), user: user}
+  end
 
   describe "index" do
     test "lists all users", %{conn: conn} do

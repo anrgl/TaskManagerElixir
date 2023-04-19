@@ -1,8 +1,6 @@
 defmodule TaskManagerWeb.SessionControllerTest do
   use TaskManagerWeb.ConnCase
-  use TaskManager.UserFactory
-
-  alias TaskManager.Users.User
+  use TaskManager.Factory
 
   @invalid_credentials %{email: "invalid@email.com", password: "invalidpassword"}
 
@@ -30,6 +28,11 @@ defmodule TaskManagerWeb.SessionControllerTest do
   end
 
   describe "delete" do
+    setup %{conn: conn} do
+      user = insert(:manager)
+      {:ok, conn: log_in_user(conn, user), user: user}
+    end
+
     test "delete current session", %{conn: conn} do
       conn = delete(conn, ~p"/api/sessions")
       assert conn.status == 204
