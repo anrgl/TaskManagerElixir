@@ -9,7 +9,7 @@ config :task_manager, TaskManager.Repo,
   username: System.get_env("DATABASE_USER"),
   password: System.get_env("DATABASE_PASSWORD"),
   hostname: System.get_env("DATABASE_HOST"),
-  database: "task_manager_test#{System.get_env("TEST_ENV_NUMBER")}",
+  database: System.get_env("DATABASE_NAME"),
   port: System.get_env("DATABASE_PORT"),
   pool: Ecto.Adapters.SQL.Sandbox,
   pool_size: 10
