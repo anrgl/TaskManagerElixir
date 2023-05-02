@@ -17,6 +17,8 @@ defmodule TaskManagerWeb.ConnCase do
 
   use ExUnit.CaseTemplate
 
+  alias TaskManager.Users.User
+
   using do
     quote do
       # The default endpoint for testing
@@ -34,5 +36,10 @@ defmodule TaskManagerWeb.ConnCase do
   setup tags do
     TaskManager.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
+  end
+
+  def log_in_user(conn, %User{} = user) do
+    {:ok, token, _} = TaskManager.Guardian.encode_and_sign(user, %{}, token_type: :access)
+    Plug.Conn.put_req_header(conn, "authorization", "Bearer " <> token)
   end
 end

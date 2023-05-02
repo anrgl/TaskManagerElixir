@@ -1,7 +1,6 @@
 defmodule TaskManager.TaskFactory do
   defmacro __using__(_opts) do
     quote do
-      use ExMachina.Ecto, repo: TaskManager.Repo
       alias TaskManager.Tasks.{Task, TaskPriority, TaskState}
 
       def new_task_factory do

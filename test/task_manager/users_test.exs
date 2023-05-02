@@ -1,6 +1,6 @@
 defmodule TaskManager.UsersTest do
   use TaskManager.DataCase
-  use TaskManager.UserFactory
+  use TaskManager.Factory
 
   alias TaskManager.Users
   alias TaskManager.Users.User

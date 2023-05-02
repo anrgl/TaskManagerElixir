@@ -1,6 +1,6 @@
 defmodule TaskManager.TagsTest do
   use TaskManager.DataCase
-  use TaskManager.TagFactory
+  use TaskManager.Factory
 
   alias TaskManager.Tags
   alias TaskManager.Tags.Tag

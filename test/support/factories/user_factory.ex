@@ -1,7 +1,6 @@
 defmodule TaskManager.UserFactory do
   defmacro __using__(_opts) do
     quote do
-      use ExMachina.Ecto, repo: TaskManager.Repo
       alias TaskManager.Users.{User, UserRole}
 
       def admin_factory do
