@@ -1,11 +1,16 @@
 defmodule TaskManagerWeb.TagsControllerTest do
   use TaskManagerWeb.ConnCase
-  use TaskManager.TagFactory
+  use TaskManager.Factory
 
   alias TaskManager.Tags.Tag
 
   @invalid_attrs %{name: nil}
   @moduletag :tag_controller
+
+  setup %{conn: conn} do
+    user = insert(:manager)
+    {:ok, conn: log_in_user(conn, user), user: user}
+  end
 
   describe "index" do
     test "lists all tags", %{conn: conn} do
