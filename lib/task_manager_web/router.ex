@@ -14,10 +14,22 @@ defmodule TaskManagerWeb.Router do
     plug Guardian.Plug.LoadResource, allow_blank: true
   end
 
+  pipeline :authenticated_api do
+    plug :api
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+
   scope "/api", TaskManagerWeb do
     pipe_through :api
 
-    resources "/sessions", SessionController, only: [:create, :delete], singleton: true
+    resources "/sessions", SessionController, only: [:create], singleton: true
+  end
+
+  scope "/api", TaskManagerWeb do
+    pipe_through :authenticated_api
+
+    resources "/sessions", SessionController, only: [:delete], singleton: true
+    resources "/user", CurrentUserController, only: [:show], singleton: true
     resources "/users", UsersController, except: [:new, :edit]
     resources "/tasks", TasksController, except: [:new, :edit]
     resources "/tags", TagsController, except: [:new, :edit]
