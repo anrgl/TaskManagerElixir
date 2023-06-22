@@ -23,3 +23,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_EVENT_PATH: ${{ github.event_path }}
         run: docker-compose --file docker-compose.ci.yml run --rm api mix coveralls.github
+
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v2
