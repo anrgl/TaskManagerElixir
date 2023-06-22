@@ -8,21 +8,25 @@ on:
     branches:
       - 'develop'
 
+permissions: write-all
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          set-safe-directory: '*'
 
       - name: Run tests
         env:
           COVERAGE: true
           MIX_ENV: test
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_EVENT_PATH: ${{ github.event_path }}
         run: docker-compose --file docker-compose.ci.yml run --rm api mix coveralls.lcov
+      
+      - name: List coverage directory
+        run: ls -lah
 
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path-to-lcov: './cover/lcov.info'
