@@ -22,7 +22,7 @@ jobs:
           MIX_ENV: test
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_EVENT_PATH: ${{ github.event_path }}
-        run: docker-compose --file docker-compose.ci.yml run --rm api mix coveralls.github
+        run: docker-compose --file docker-compose.ci.yml run --rm api mix coveralls.lcov
 
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v2
