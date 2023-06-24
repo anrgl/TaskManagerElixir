@@ -1,4 +1,5 @@
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2Fanrgl%2FTaskManagerElixir%2Fbadge%3Fref%3Ddevelop&style=flat)](https://actions-badge.atrox.dev/anrgl/TaskManagerElixir/goto?ref=develop)
+[![Coverage Status](https://coveralls.io/repos/github/anrgl/TaskManagerElixir/badge.svg)](https://coveralls.io/github/anrgl/TaskManagerElixir)
 # TaskManager
 
 To start your Phoenix server:
