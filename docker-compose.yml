@@ -21,6 +21,7 @@ services:
   api:
     build:
       context: ./
+      target: base
       args:
         ENV: dev
     environment:

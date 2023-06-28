@@ -17,6 +17,7 @@ services:
     image: userapp_api
     build:
       context: .
+      target: base
       args:
         ENV: test
     environment:
