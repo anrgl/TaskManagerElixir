@@ -59,7 +59,9 @@ defmodule TaskManager.MixProject do
       {:phoenix_swagger, "~> 0.8"},
       {:guardian, "~> 2.3"},
       {:argon2_elixir, "~> 3.1"},
-      {:excoveralls, "~> 0.10", only: :test}
+      {:excoveralls, "~> 0.10", only: :test},
+      {:phoenix_swoosh, "~> 1.2"},
+      {:phoenix_html, "~> 3.3"}
     ]
   end
 
