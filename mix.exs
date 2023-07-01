@@ -50,7 +50,9 @@ defmodule TaskManager.MixProject do
       {:ex_json_schema, "~> 0.9"},
       {:phoenix_swagger, "~> 0.8"},
       {:guardian, "~> 2.3"},
-      {:argon2_elixir, "~> 3.1"}
+      {:argon2_elixir, "~> 3.1"},
+      {:phoenix_swoosh, "~> 1.2"},
+      {:phoenix_html, "~> 3.3"}
     ]
   end
 
