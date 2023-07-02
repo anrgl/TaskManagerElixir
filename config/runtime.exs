@@ -20,7 +20,7 @@ if System.get_env("PHX_SERVER") do
   config :task_manager, TaskManagerWeb.Endpoint, server: true
 end
 
-if config_env() == :prod do
+if config_env() not in [:test, :dev] do
   database_url =
     System.get_env("DATABASE_URL") ||
       raise """
@@ -48,7 +48,7 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  host = System.get_env("PHX_HOST") || "example.com"
+  host = System.get_env("DOMANIN")
   port = String.to_integer(System.get_env("PORT") || "4000")
 
   config :task_manager, TaskManagerWeb.Endpoint,
@@ -101,10 +101,16 @@ if config_env() == :prod do
   # Also, you may need to configure the Swoosh API client of your choice if you
   # are not using SMTP. Here is an example of the configuration:
   #
-  #     config :task_manager, TaskManager.Mailer,
-  #       adapter: Swoosh.Adapters.Mailgun,
-  #       api_key: System.get_env("MAILGUN_API_KEY"),
-  #       domain: System.get_env("MAILGUN_DOMAIN")
+  config :task_manager, TaskManager.Mailer,
+    adapter: Swoosh.Adapters.SMTP,
+    relay: System.fetch_env!("MAILER_HOST"),
+    username: System.fetch_env!("MAILER_USER"),
+    password: System.fetch_env!("MAILER_PASS"),
+    tls: :always,
+    auth: :always,
+    port: String.to_integer(System.get_env("MAILER_PORT", "587"))
+
+  config :task_manager, :mailer, email_from: System.get_env("MAILER_EMAIL_FROM")
   #
   # For this example you need include a HTTP client required by Swoosh API client.
   # Swoosh supports Hackney and Finch out of the box:
