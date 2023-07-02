@@ -56,6 +56,15 @@ defmodule TaskManager.Tasks do
     %Task{}
     |> Task.changeset(attrs)
     |> Repo.insert()
+    |> case do
+      {:ok, %Task{} = task} ->
+        task = Repo.preload(task, [:creator, :performer])
+        notify_performer(task)
+        {:ok, task}
+
+      error ->
+        error
+    end
   end
 
   @doc """
@@ -103,5 +112,11 @@ defmodule TaskManager.Tasks do
   """
   def change_task(%Task{} = task, attrs \\ %{}) do
     Task.changeset(task, attrs)
+  end
+
+  def notify_performer(%Task{} = task) do
+    task
+    |> TaskManager.Notifiers.UserNotifier.notification()
+    |> TaskManager.Mailer.deliver()
   end
 end
