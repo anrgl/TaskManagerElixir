@@ -118,4 +118,10 @@ defmodule TaskManager.Users do
       {:error, :invalid_credentials}
     end
   end
+
+  def update_avatar(%User{} = user, attrs \\ %{}) do
+    user
+    |> User.avatar_changeset(attrs)
+    |> Repo.update()
+  end
 end

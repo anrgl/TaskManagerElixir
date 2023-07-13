@@ -1,7 +1,10 @@
 defmodule TaskManager.Users.User do
-  alias TaskManager.Repo
   use Ecto.Schema
+  use Waffle.Ecto.Schema
   import Ecto.Changeset
+
+  alias TaskManager.Repo
+  alias TaskManager.AvatarFile
   alias TaskManager.Users.UserRole
 
   schema "users" do
@@ -11,6 +14,7 @@ defmodule TaskManager.Users.User do
     field :hashed_password, :string, redact: true
     field :last_name, :string
     field :role, UserRole
+    field :avatar, AvatarFile.Type
 
     timestamps()
   end
@@ -19,9 +23,16 @@ defmodule TaskManager.Users.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [:email, :role, :first_name, :last_name, :password])
+    |> cast_attachments(attrs, [:avatar])
     |> validate_required([:email, :role, :first_name, :last_name, :password])
     |> validate_email(:email)
     |> validate_and_hash_password()
+  end
+
+  def avatar_changeset(user, attrs) do
+    user
+    |> cast_attachments(attrs, [:avatar])
+    |> validate_required([:avatar])
   end
 
   defp validate_email(changeset, field) when is_atom(field) do
