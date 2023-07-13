@@ -18,10 +18,9 @@ defmodule TaskManagerWeb.Endpoint do
   # You should set gzip to true if you are running phx.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/",
-    from: :task_manager,
-    gzip: false,
-    only: TaskManagerWeb.static_paths()
+    at: "/uploads",
+    from: Path.expand("./priv/static"),
+    gzip: false
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.

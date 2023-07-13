@@ -17,7 +17,8 @@ defmodule TaskManagerWeb.CurrentUserControllerTest do
       "first_name" => user.first_name,
       "last_name" => user.last_name,
       "email" => user.email,
-      "role" => user.role
+      "role" => user.role,
+      "avatar" => nil
     }
 
     assert %{"data" => ^expected_user} = json_response(conn, 200)
