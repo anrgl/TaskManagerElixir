@@ -10,16 +10,16 @@ server:
 iex:
 	docker-compose run --rm --service-ports api iex -S mix phx.server
 
-deps_get:
+deps-get:
 	docker-compose run --rm api mix deps.get
 
-api_linter:
+api-linter:
 	docker-compose run --rm api mix dialyzer
 
-api_format:
+api-format:
 	docker-compose run --rm api mix format
 
-api_test:
+api-test:
 	docker-compose run --rm -e MIX_ENV=test api mix test
 
 bash:
