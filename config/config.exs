@@ -28,6 +28,7 @@ config :task_manager, TaskManagerWeb.Endpoint,
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
 config :task_manager, TaskManager.Mailer, adapter: Swoosh.Adapters.Local
+config :task_manager, :mailer, email_from: "admin@localhost.com"
 
 # Configures Elixir's Logger
 config :logger, :console,
