@@ -9,7 +9,15 @@ defmodule TaskManager.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        coveralls: :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test,
+        "coveralls.lcov": :test
+      ]
     ]
   end
 
@@ -50,7 +58,8 @@ defmodule TaskManager.MixProject do
       {:ex_json_schema, "~> 0.9"},
       {:phoenix_swagger, "~> 0.8"},
       {:guardian, "~> 2.3"},
-      {:argon2_elixir, "~> 3.1"}
+      {:argon2_elixir, "~> 3.1"},
+      {:excoveralls, "~> 0.10", only: :test}
     ]
   end
 

@@ -3,6 +3,8 @@ version: "3.7"
 x-app-config: &app-config
   MIX_ENV: test
   SECRET_KEY_BASE: secret_key
+  GITHUB_EVENT_PATH: ${GITHUB_EVENT_PATH}
+  GITHUB_TOKEN: ${GITHUB_TOKEN}
 
 x-db-config: &db-config
   DATABASE_NAME: postgres
@@ -28,6 +30,8 @@ services:
       - "4000:4000"
     stdin_open: true
     tty: true
+    volumes:
+      - /home/runner/work/_temp/_github_workflow:/home/runner/work/_temp/_github_workflow
 
   db:
     image: postgres:12.5-alpine
