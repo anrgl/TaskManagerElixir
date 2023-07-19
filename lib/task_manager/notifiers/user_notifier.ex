@@ -1,6 +1,6 @@
 defmodule TaskManager.Notifiers.UserNotifier do
   use Phoenix.Swoosh,
-    view: TaskManagerWeb.UserNotifierViews,
+    view: TaskManagerWeb.UserNotifierView,
     layout: {TaskManagerWeb.LayoutView, :email}
 
   alias TaskManager.Tasks.Task
