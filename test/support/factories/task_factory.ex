@@ -38,6 +38,8 @@ defmodule TaskManager.TaskFactory do
           end_task_date: Faker.Date.forward(1),
           priority: TaskPriority.value!(:low),
           state: nil,
+          creator: insert(:manager),
+          performer: insert(:developer),
           tags: []
         }
       end
