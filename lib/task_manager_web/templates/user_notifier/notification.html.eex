@@ -1,0 +1,15 @@
+<h1 style="font-size:20px;"><%= @task.performer.first_name %> <%= @task.performer.last_name %> you've assigned to task <%= @task.title %>!</h1>
+<p style="
+    font-size: 16px;
+    line-height: 24px;
+    color: black;">Hi <%= @task.performer.first_name %> <%= @task.performer.last_name %>!</p>
+<p style="
+    font-size: 16px;
+    line-height: 24px;
+    color: black;">It is a notification that you are assigned a task <b><%= @task.title %></b>
+    by <%= @task.creator.first_name %> <%= @task.creator.last_name %>.
+</p>
+<p style="
+    font-size: 16px;
+    line-height: 24px;
+    color: black;">Description of task: <%= @task.description %></p>
