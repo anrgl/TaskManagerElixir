@@ -61,7 +61,13 @@ defmodule TaskManager.MixProject do
       {:argon2_elixir, "~> 3.1"},
       {:excoveralls, "~> 0.10", only: :test},
       {:phoenix_swoosh, "~> 1.2"},
-      {:phoenix_html, "~> 3.3"}
+      {:phoenix_html, "~> 3.3"},
+      {:waffle, "~> 1.1.5"},
+      {:waffle_ecto, "~> 0.0.11"},
+      {:ex_aws, "~> 2.1.2"},
+      {:ex_aws_s3, "~> 2.0"},
+      {:hackney, "~> 1.9"},
+      {:sweet_xml, "~> 0.7"}
     ]
   end
 

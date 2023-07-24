@@ -57,3 +57,7 @@ config :phoenix_swagger, json_library: Jason
 config :task_manager, TaskManager.Guardian,
   issuer: "task_manager",
   secret_key: "f6SWKek9Orqut/9szsekFhf/wo+kCUfFoSvyXAQwAEw/VkpIRwryPo/tNnQvJLkp"
+
+config :waffle,
+  storage: Waffle.Storage.Local,
+  strorage_dir_prefix: "priv/static"

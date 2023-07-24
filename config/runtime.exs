@@ -118,4 +118,14 @@ if config_env() not in [:test, :dev] do
   #     config :swoosh, :api_client, Swoosh.ApiClient.Hackney
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
+
+  config :waffle,
+    storage: Waffle.Storage.S3,
+    bucket: System.get_env("BUCKET_NAME")
+
+  config :ex_aws,
+    json_code: Jason,
+    access_key_id: [{:system, "AWS_ACCESS_KEY_ID"}, :instance_role],
+    secret_access_key: [{:system, "AWS_SECRET_ACCESS_KEY"}, :instance_role],
+    region: System.fetch_env!("AWS_REGION_NAME")
 end
