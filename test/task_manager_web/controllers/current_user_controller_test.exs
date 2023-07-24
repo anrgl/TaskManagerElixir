@@ -23,4 +23,26 @@ defmodule TaskManagerWeb.CurrentUserControllerTest do
 
     assert %{"data" => ^expected_user} = json_response(conn, 200)
   end
+
+  describe "update user avatar" do
+    test "renders user when data is valid", %{conn: conn} do
+      avatar_params = get_avatar_params()
+
+      conn = put(conn, ~p"/api/user/avatar", avatar: avatar_params)
+      assert json_response(conn, 200)
+
+      conn = get(conn, ~p"/api/user")
+
+      avatar = "/uploads/#{avatar_params.filename}"
+
+      assert %{"avatar" => ^avatar} = json_response(conn, 200)["data"]
+    end
+  end
+
+  defp get_avatar_params do
+    %Plug.Upload{
+      path: "test/support/files/avatar.jpeg",
+      filename: "avatar.jpeg"
+    }
+  end
 end
