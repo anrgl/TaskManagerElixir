@@ -29,7 +29,11 @@ defmodule TaskManagerWeb.Router do
     pipe_through :authenticated_api
 
     resources "/sessions", SessionController, only: [:delete], singleton: true
-    resources "/user", CurrentUserController, only: [:show], singleton: true
+
+    resources "/user", CurrentUserController, only: [:show], singleton: true do
+      resources "/avatar", CurrentUserController, only: [:update], singleton: true
+    end
+
     resources "/users", UsersController, except: [:new, :edit]
     resources "/tasks", TasksController, except: [:new, :edit]
     resources "/tags", TagsController, except: [:new, :edit]

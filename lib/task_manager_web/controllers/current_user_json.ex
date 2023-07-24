@@ -1,5 +1,6 @@
 defmodule TaskManagerWeb.CurrentUserJSON do
   alias TaskManager.Users.User
+  alias TaskManager.AvatarFile
 
   def show(%{user: %User{} = user}) do
     %{
@@ -8,7 +9,8 @@ defmodule TaskManagerWeb.CurrentUserJSON do
         email: user.email,
         first_name: user.first_name,
         last_name: user.last_name,
-        role: user.role
+        role: user.role,
+        avatar: AvatarFile.url({user.avatar, user}, signed: true)
       }
     }
   end
